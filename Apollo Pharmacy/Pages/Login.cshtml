@@ -1,0 +1,90 @@
+﻿@page
+@model Apollo_Pharmacy.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<br>
+<section class="vh-100" style="background-color: #9A616D;">
+  <div  class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="https://img.freepik.com/premium-vector/hand-holding-medical-hospital-icon-symbol-vector_77417-324.jpg?w=2000"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" height="600" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form name="myform" method="post" onsubmit="return validateform()">
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                  <br>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" >UserName</label>
+                    <input type="text"  name="username" class="form-control form-control-lg" />
+                    
+                  </div>
+
+
+
+                  <div class="form-outline mb-4">
+
+                    <label class="form-label">Password</label>
+                    <input type="password"  name="password" class="form-control form-control-lg" />
+                    
+                  </div>
+
+
+
+                  <div class="pt-1 mb-4">
+
+                    <input id="Verify"  class="btn btn-dark btn-lg btn-block" type="submit" value="Verify Credentials" />
+                    
+                  </div>
+                  <div id="login" class="pt-1 mb-4">
+                    <a href="/Hospital"><button id="button-click" disabled="disabled" class="btn btn-dark btn-lg btn-block" type="button">Login</button></a>
+                  </div>
+                  
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    //function hideit(){
+    //    document.getElementById('').disabled = true;
+    //}
+    function validateform() {
+        var name = document.myform.username.value;
+        var password = document.myform.password.value;
+
+        if (name == null || name == "") {
+            alert("Name can't be blank");
+            return false;
+        } else if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false;
+        } else if (name == "admin" && password == "pass@123") {
+            document.getElementById('Verify').style.color = 'green';
+            document.getElementById('Verify').ariaDisabled= true;
+        //    document.getElementById('login').style.visibility = 'visible';
+            document.getElementById('button-click').Disabled = false;
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script> 
